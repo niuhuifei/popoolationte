@@ -40,7 +40,7 @@ cat reference-genome.fasta.masked te-sequences.fasta > combined-reference.fasta
 }}}
 
 
-== Obtaining a TE hierarcy ==
+== Obtaining a TE hierarchy ==
 
 Create a TE hierarchy containing one entry for EVERY sequence in the TE sequences fasta-file! The depth of the hierarchy, the classification of the elements and the names for different hierarchy-levels is up to the user!
 
