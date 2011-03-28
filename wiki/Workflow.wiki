@@ -16,6 +16,8 @@ Here we introduce a novel and cost efficient approach to estimate TE population 
   * Perl
   * BWA
   * SAMtools
+  * RepeatMasker
+  * PoPoolation TE
 
 
 = Workflow =
