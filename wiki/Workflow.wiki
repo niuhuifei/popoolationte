@@ -24,7 +24,7 @@ Here we introduce a novel and cost efficient approach to estimate TE population 
 
 == Preparing the reference sequence ==
 
-  # Download a reference genome. Remove unnecessary comments from the fasta headers (>chr2 fbid="blalbal"; curator="hanswurst" => >chr2)
+  # Download a reference genome. Remove unnecessary comments from the fasta headers
 {{{
 cat dmel-all-chromosome-r5.31|awk '{print $1}' > ../wg/dmel-5.31-short.fasta
 }}}
