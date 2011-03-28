@@ -24,6 +24,22 @@ Here we introduce a novel and cost efficient approach to estimate TE population 
 
 == Preparing the reference sequence ==
 
+  # Download a reference genome. Remove unnecessary comments from the fasta headers (>chr2 fbid="blalbal"; curator="hanswurst" => >chr2)
+{{{
+cat dmel-all-chromosome-r5.31|awk '{print $1}' > ../wg/dmel-5.31-short.fasta
+}}}
+  # Download the transposon sequences. Remove unnecessary comments from the fasta header
+  # Filter TE elements that are to short (e.g.: < 40bp)
+  # RepeatMask the reference genome using the transposon sequences as a custom library
+{{{
+perl RepeatMasker -no_is -nolow -norna --lib te-sequences.fasta -pa 4 reference-genome.fasta
+}}}
+  # Merge the repeat-masked reference genome and the TE sequences
+{{{
+cat reference-genome.fasta.masked te-sequences.fasta > combined-reference.fasta
+}}}
+
+
 == Obtaining a TE hierarcy ==
 
 == Identify TE insertions ==
