@@ -119,4 +119,18 @@ perl filter-teinserts.pl --te-insertions te-polymorphism.txt --output te-poly-fi
 4       135333  R       gypsy12 0.0784313725490196      LTR     -       -       -       -       -       -       -       -       -       135433  135491  0.0784313725490196      51      4       47      0
 4       145298  FR      HB      1       TIR     FBti0062857     ncorrdist=99    144489  144588  1       23      23      0       0       146008  146085  1       47      47      0       1
 4       146710  FR      Tc1     1       TIR     FBti0019474     ncorrdist=89    145963  146062  1       23      23      0       0       147358  147390  1       14      14      0       0
-}}}
+}}} 
+  * Col1: the reference sequence ID
+  * Col2: position in the reference sequence
+  * Col3: is the TE insertion supported by a forward (F), by a reverse (R) or by both (FR) insertions
+  * Col4: family of the TE insertion
+  * Col5: population frequency (1..fixed)
+  * Col6: order of the TE insertion
+  * Col7: ID if the TE insertion is present in the reference genome (e.g.: FlyBase ID)
+  * Col8: comment
+  * Col9: start of the range of the forward insertion
+  * Col10: end of the range of the forward insertion
+  * Col11: population frequency estimated by the forward insertion
+  * Col12: coverage of the forward insertion
+  * Col13: 
+
