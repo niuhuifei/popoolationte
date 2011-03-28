@@ -79,8 +79,7 @@ equence.txt --fq2 ../reads/Jul_s_5_2_sequence.txt --output pe-reads.sam
 
   # Identify forward and reverse insertions
 {{{
-perl identify-te-insertsites.pl --input pe-reads.sam --te-hiera
-rchy-file te-hierarchy.txt --te-hierarchy-level family --narrow-range 75 --min-count 3 --min-map-qual 15 --output te-fwd-rev.txt
+perl identify-te-insertsites.pl --input pe-reads.sam --te-hierarchy-file te-hierarchy.txt --te-hierarchy-level family --narrow-range 75 --min-count 3 --min-map-qual 15 --output te-fwd-rev.txt
 }}} 
 
   # Identify the positions of poly-N stretches in the repeat-masked reference genome. PoPoolation TE calculates the distance between forward and reverse insertions and ignores poly-N stretches for calculating these distances.
@@ -88,4 +87,23 @@ rchy-file te-hierarchy.txt --te-hierarchy-level family --narrow-range 75 --min-c
 perl genomic-N-2gtf.pl --input combined-reference.fasta > poly_n.gtf
 }}}
 
+  # Crosslink forward and reverse insertions thus obtaining TE insertions
+{{{
+perl crosslink-te-sites.pl --directional-insertions te-fwd-rev.txt --min-dist 74 --max-dist 250 --output te-inserts.txt --single-site-shift 100 --poly-n poly_n.gtf --te-hierarchy te-hierarchy.txt --te-hier-level family
+}}}
+
+  # Optional: Use the known TE insertions to improve the crosslinking of forward and reverse insertions
+{{{
+perl update-teinserts-with-knowntes.pl --known known-te-insertions.txt --output te-insertions.updated.txt --te-hierarchy-file te-hierarchy.txt --te-hierarchy-level family --max-dist 300 --te-insertions te-inserts.txt --single-site-shift 100
+}}}
+
+The known TE insertion file has to look like in the following example:
+{{{
+2L      F       20740303        FBti0015567
+2L      R       20748120        FBti0015567
+2R      F       5614174 FBti0018861
+2R      R       5621667 FBti0018861
+}}}
+Column1 is the reference chromosome, column2 the direction of the insertion either forward (F) or reverse (R), column3 is the position and
+column4 is the fasta-header of the corresponding TE sequence (here the FlyBase ID)
 == Estimate population frequencies ==
