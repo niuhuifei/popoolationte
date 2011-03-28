@@ -1,0 +1,27 @@
+#summary How to assess transposable element polymorphism in a population
+
+= Introduction =
+
+A simple and cheap approach to genome-wide assess TE insertion frequencies in populations will allow addressing fundamental questions about TE dynamics and species evolution in more general.
+
+Here we introduce a novel and cost efficient approach to estimate TE population frequencies for TE insertions that are present in the reference sequence as well as for novel TE insertions. Our approach solely requires sequencing of a single paired-end (PE) sample of a pooled population per investigated population. Our approach has the additional advantage that sequencing of pooled populations also yields genome-wide estimates of SNP frequencies and thus standard population genetics measures such as Tajima’s D can easily be calculated [http://code.google.com/p/popoolation/]. 
+
+= Requirements =
+
+  * paired-end sequences of a pooled population
+  * a reference genome
+  * a transposable element sequence database (i.e.: a fasta file containing sequences of TEs)
+  * Perl
+  * BWA
+  * SAMtools
+
+
+= Workflow =
+
+== Preparing the reference sequence ==
+
+== Obtaining a TE hierarcy ==
+
+== Identify TE insertions ==
+
+== Estimate population frequencies ==
