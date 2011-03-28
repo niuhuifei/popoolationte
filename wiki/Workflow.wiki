@@ -132,5 +132,12 @@ perl filter-teinserts.pl --te-insertions te-polymorphism.txt --output te-poly-fi
   * Col10: end of the range of the forward insertion
   * Col11: population frequency estimated by the forward insertion
   * Col12: coverage of the forward insertion
-  * Col13: 
-
+  * Col13: TE-presence reads of the forward insertion 
+  * Col14: TE-absence reads of the reverse insertion
+  * Col15: is the range of the forward insertion overlapping with a forward-range of another TE insertion (0..no; 1..yes)
+  * Col16: start of the range of the reverse insertion
+  * Col17: end of the range of the reverse insertion
+  * Col18: coverage of the reverse insertion
+  * Col19: TE-presence reads of the reverse insertion
+  * Col20: TE-absence reads of the reverse insertion
+  * Col21: is the range of the reverse insertion overlapping with the reverese-range of another TE insertion (0..no; 1..yes)
