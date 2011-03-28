@@ -77,4 +77,15 @@ equence.txt --fq2 ../reads/Jul_s_5_2_sequence.txt --output pe-reads.sam
 }}}
 == Identify TE insertions ==
 
+  # Identify forward and reverse insertions
+{{{
+perl identify-te-insertsites.pl --input pe-reads.sam --te-hiera
+rchy-file te-hierarchy.txt --te-hierarchy-level family --narrow-range 75 --min-count 3 --min-map-qual 15 --output te-fwd-rev.txt
+}}} 
+
+  # Identify the positions of poly-N stretches in the repeat-masked reference genome. PoPoolation TE calculates the distance between forward and reverse insertions and ignores poly-N stretches for calculating these distances.
+{{{
+perl genomic-N-2gtf.pl --input combined-reference.fasta > poly_n.gtf
+}}}
+
 == Estimate population frequencies ==
