@@ -1,5 +1,7 @@
 #summary How to assess transposable element polymorphism in a population
 
+<wiki:toc max_depth="2" />
+
 = Introduction =
 
 A simple and cheap approach to genome-wide assess TE insertion frequencies in populations will allow addressing fundamental questions about TE dynamics and species evolution in more general.
