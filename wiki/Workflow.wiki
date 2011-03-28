@@ -15,7 +15,7 @@ Here we introduce a novel and cost efficient approach to estimate TE population 
   * a transposable element sequence database (i.e.: a fasta file containing sequences of TEs)
   * Perl
   * BWA
-  * !SAMtools
+  * SAMtools
   * !RepeatMasker
   * !PoPoolation TE
 
