@@ -81,17 +81,14 @@ equence.txt --fq2 ../reads/Jul_s_5_2_sequence.txt --output pe-reads.sam
 {{{
 perl identify-te-insertsites.pl --input pe-reads.sam --te-hierarchy-file te-hierarchy.txt --te-hierarchy-level family --narrow-range 75 --min-count 3 --min-map-qual 15 --output te-fwd-rev.txt
 }}} 
-
   # Identify the positions of poly-N stretches in the repeat-masked reference genome. PoPoolation TE calculates the distance between forward and reverse insertions and ignores poly-N stretches for calculating these distances.
 {{{
 perl genomic-N-2gtf.pl --input combined-reference.fasta > poly_n.gtf
 }}}
-
   # Crosslink forward and reverse insertions thus obtaining TE insertions
 {{{
-perl crosslink-te-sites.pl --directional-insertions te-fwd-rev.txt --min-dist 74 --max-dist 250 --output te-inserts.txt --single-site-shift 100 --poly-n poly_n.gtf --te-hierarchy te-hierarchy.txt --te-hier-level family
+perl crosslink-te-sites.pl --directional-insertions te-fwd-rev.txt --min-dist 74 --max-dist 250 --output te-inserts.txt --single-site-shift 100 --poly-n poly_n.gtf --te-hierarchy te-hierarchy.txt --te-hier-level order
 }}}
-
   # Optional: Use the known TE insertions to improve the crosslinking of forward and reverse insertions
 {{{
 perl update-teinserts-with-knowntes.pl --known known-te-insertions.txt --output te-insertions.updated.txt --te-hierarchy-file te-hierarchy.txt --te-hierarchy-level family --max-dist 300 --te-insertions te-inserts.txt --single-site-shift 100
@@ -107,3 +104,19 @@ The known TE insertion file has to look like in the following example:
 Column1 is the reference chromosome, column2 the direction of the insertion either forward (F) or reverse (R), column3 is the position and
 column4 is the fasta-header of the corresponding TE sequence (here the FlyBase ID)
 == Estimate population frequencies ==
+  # Estimate population frequencies
+{{{
+perl estimate-polymorphism.pl --sam-file pe-reads.sam --te-insert-file te-insertions.updated.txt --te-hierarchy-file te-hierarchy.txt --te-hierarchy-level family --min-map-qual 15 --output te-polymorphism.txt
+}}}
+  # Optional: Filter the file
+{{{
+perl filter-teinserts.pl --te-insertions te-polymorphism.txt --output te-poly-filtered.txt --discard-overlapping --min-count 10
+}}}
+  # Voila: the output file
+{{{
+4       135417  F       G4      0.75    non-LTR -       -       135302  135317  0.75    4       3       1       1       -       -       -       -       -       -       -
+4       135906  FR      G5      1       non-LTR FBti0020406     ncorrdist=105   135348  135447  1       17      17      0       0       136365  136464  1       74      74      0       0
+4       135333  R       gypsy12 0.0784313725490196      LTR     -       -       -       -       -       -       -       -       -       135433  135491  0.0784313725490196      51      4       47      0
+4       145298  FR      HB      1       TIR     FBti0062857     ncorrdist=99    144489  144588  1       23      23      0       0       146008  146085  1       47      47      0       1
+4       146710  FR      Tc1     1       TIR     FBti0019474     ncorrdist=89    145963  146062  1       23      23      0       0       147358  147390  1       14      14      0       0
+}}}
