@@ -70,7 +70,7 @@ bwa index combined-reference.fasta
 bwa bwasw -t 6 combined-reference.fasta ../reads/Jul_s_5_1_sequence.txt > Jul_s_5_1_seq.sam
 bwa bwasw -t 6 combined-reference.fasta ../reads/Jul_s_5_2_sequence.txt > Jul_s_5_2_seq.sam
 }}}
-  # Create paired-end information using samro (!PoPoolationTE)
+  # Create paired-end information using samro (!PoPoolation TE)
 {{{
 perl samro.pl --sam1 Jul_s_5_1_seq.sam --sam2 Jul_s_5_2_seq.sam --fq1 ../reads/Jul_s_5_1_s
 equence.txt --fq2 ../reads/Jul_s_5_2_sequence.txt --output pe-reads.sam
