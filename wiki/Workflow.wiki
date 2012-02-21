@@ -75,6 +75,13 @@ bwa bwasw -t 6 combined-reference.fasta ../reads/Jul_s_5_2_sequence.txt > Jul_s_
 perl samro.pl --sam1 Jul_s_5_1_seq.sam --sam2 Jul_s_5_2_seq.sam --fq1 ../reads/Jul_s_5_1_s
 equence.txt --fq2 ../reads/Jul_s_5_2_sequence.txt --output pe-reads.sam
 }}}
+
+  # Sort the sam file
+The sam-file needs to be sorted with samtools
+{{{
+samtools view -Sb pe-reads.bam| samtools sort - pe-reads.sorted
+samtools view pe-reads.sorted.bam > pe-reads.sorted.sam
+}}}
 == Identify TE insertions ==
 
   # Identify forward and reverse insertions
