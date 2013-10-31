@@ -53,7 +53,7 @@ for my $i (0..(@h1-1))
 {
     my $hl1=$h1[$i];
     my $hl2=$h2[$i];
-    die "heaer in the two sam files are not identical" unless $hl1 eq $hl2;
+    warn "header in the two sam files are not identical" unless $hl1 eq $hl2;
     print $ofh $hl1."\n"; 
 }
 
