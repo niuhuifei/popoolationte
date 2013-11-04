@@ -307,7 +307,8 @@ exit;
             }
         }
 
-        warn "if of read is supposed to end with /1 or /2 : $readid" unless $readid=~m{/[12]$};
+        # following line has been disabled as sam now obviously does not contain the /1 or /2 of the fastq id anymore..
+        # warn "if of read is supposed to end with /1 or /2 : $readid" unless $readid=~m{/[12]$};
         $readid=~s{/[12]$}{};
         $s->{readid}=$readid;
         return $s;
