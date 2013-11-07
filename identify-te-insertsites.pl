@@ -87,7 +87,7 @@ exit;
         my $narrow_range=shift; # the range which will be considered for polymorphism detection. Will be more narrow than the wide range
         my $mincount=shift;
         my $te_translator=shift;
-        die "wide range must be larger than the narrow range" if $wide_range < $narrow_range;
+        die "wide range must be larger than the narrow range; $wide_range vs $narrow_range" if $wide_range < $narrow_range;
         
         return sub
         {
