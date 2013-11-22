@@ -78,7 +78,7 @@ sub _parse_teinsert
     $roverlap eq "-"and $roverlap=undef;
     
     die "Invalid TE Insertion $l\n" unless $chr;
-    die "Invalid TE Insertion $l\n" unless $inspos;
+    die "Invalid TE Insertion $l\n" unless defined($inspos);
     die "Invalid TE Insertion $l\n" unless $sitesupport;
     die "Invalid TE Insertion $l\n" unless $teid;
     die "Invalid TE Insertion $l\n" unless ($frstart or $rrstart);
