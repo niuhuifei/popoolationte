@@ -81,7 +81,7 @@ sub _parse_teinsert
     die "Invalid TE Insertion $l\n" unless defined($inspos);
     die "Invalid TE Insertion $l\n" unless $sitesupport;
     die "Invalid TE Insertion $l\n" unless $teid;
-    die "Invalid TE Insertion $l\n" unless ($frstart or $rrstart);
+    die "Invalid TE Insertion $l\n" unless (defined($frstart) or defined($rrstart));
     
     return TEInsert->new($chr,$inspos,$teid,$order,$fbid,$comment, $frstart,$frend,$fpres,$fabs,$foverlap,$rrstart,$rrend,$rpres,$rabs,$roverlap);
     # INT: chr, inspos, teid, order, fbid, comment, frstart, frend, fpres, fabs, foverlap, rrstart, rrend, rpres, rabs, roverlap
