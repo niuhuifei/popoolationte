@@ -33,7 +33,7 @@ GetOptions(
     "single-site-shift=i"       =>\$singlesiteshift,
     "help"                      =>\$help
 );
-podusage(-verbose=>2) if $help;
+pod2usage(-verbose=>2) if $help;
 
 
 print "Loading TE hierarchy...\n";

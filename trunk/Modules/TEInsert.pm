@@ -30,6 +30,7 @@
         my $rpres=shift;
         my $rabs=shift;
         my $roverlap=shift;
+        $inspos=1 if $inspos<1;
         
         my($fcov,$rcov,$sitesupport)=(undef,undef,undef);
         my($popfreq,$rpopfreq,$fpopfreq)=(undef,undef,undef);
@@ -40,18 +41,18 @@
         
         # BASE: chr, inspos, teid, order, fbid, comment, frstart, frend, fpres, fabs, foverlap, rrstart, rrend, rpres, rabs, roverlap
         # DERIVED: fcov, rcov, sitesupport, popfreq, rpopfreq, fpopfreq
-        if($frstart and $rrstart)
+        if(defined($frstart) and defined($rrstart))
         {
             $popfreq=($fpopfreq+$rpopfreq)/2 if(defined($fpopfreq) and defined($rpopfreq));
             $sitesupport="FR";
         }
-        elsif($frstart)
+        elsif(defined($frstart))
         {
             $popfreq=$fpopfreq;
             $sitesupport="F";
             
         }
-        elsif($rrstart)
+        elsif(defined($rrstart))
         {
             $popfreq=$rpopfreq;
             $sitesupport="R";
