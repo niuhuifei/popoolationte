@@ -18,7 +18,7 @@ my $mincount=2;
 my $insertdistance=300;
 my $insertdistStddev=40;
 my $readlength=100;
-my $narrowrange=300;
+my $narrowrange=200;
 my $output="";
 my $minMapquality=20;
 my $help=0;
@@ -61,11 +61,11 @@ while(my $sc=$scr->nextChunk())
     my ($chr,$start,$end,$count)=($sc->[0]{chr},$sc->[0]{start},$sc->[-1]{end},scalar(@$sc));
     print "Processing Chunk of $count TE-insertion reads; $chr:$start-$end; ";
     
-    # chr,strand, teid, count, nstart, nend, wstart, wend, posstring, sam
+    # chr,strand, teid, count, nstart, nend, wstart, wend, posstring, sam 
     my $annotes=$cp->($sc);
     foreach my $an (@$annotes)
     {
-        print $ofh "$an->{chr}\t$an->{strand}\t$an->{teid}\t$an->{count}\t$an->{nstart}\t$an->{nend}\t$an->{wstart}:$an->{wend}=>$an->{posstring}\n"
+        print $ofh "$an->{chr}\t$an->{strand}\t$an->{teid}\t$an->{count}\t$an->{nstart}\t$an->{nend}\t$an->{wstart}:$an->{wend}=>$an->{scorerange}=$an->{posstring}\n"
     }
     my $counti=@$annotes;
     print "Identified $counti TE-insertion sites\n";
@@ -82,7 +82,7 @@ exit;
     
     sub get_chunk_parser
     {
-        # get a chunk from the chromosome which contains varien TE insertions and resolve and annotate them
+        # get a chunk from the chromosome which contains various TE insertions and resolve and annotate them
         my $wide_range=shift;  # all TEs of one kind which belong together (to the same insertion)
         my $narrow_range=shift; # the range which will be considered for polymorphism detection. Will be more narrow than the wide range
         my $mincount=shift;
@@ -119,6 +119,7 @@ exit;
     
     sub _parseRange
     {
+        # here are all insertions of the same stand and family within a certain wide range
         my $insertions=shift;
         my $strand=shift;
         my $wide_range=shift;
@@ -156,12 +157,61 @@ exit;
         my $toret=[];
         foreach my $t(@$temp)
         {
-            next unless @$t >=$mincount;
+            #next unless @$t >=$mincount;
             $t = $strand eq "F" ? _annotateFwd($t,$narrow_range,$teid) : _annotateRev($t,$narrow_range,$teid);
+            #$t=_annotate($t,$strand,$narrow_range,$teid);
+            next unless $t->{scorerange}>= $mincount;
             push @$toret,$t;
         }
         return $toret;
     }
+    
+    
+    sub _find_narrow_range
+    {
+        # maximize the positions within the narrow range
+        my $startposcount=shift;
+        
+        my $nr=shift;
+        my $minstart=shift;
+        my $maxstart=shift;
+
+        # calculate the sums within the $narrowrange
+        my $sumcount=[];
+        
+        for(my $i=0; $i < @$startposcount; $i++)
+        {
+            my $sum=0;
+            for(my $k=0; $k<$nr; $k++)
+            {
+                my $index=$i+$k;
+                my $toad=$startposcount->[$index];
+                $toad=0 unless defined($toad);
+                $sum+=$toad;
+            }
+            $sumcount->[$i]=$sum;
+        }
+        
+        
+        my $max=0;
+        my $maxindex=0;
+        for(my $i=0; $i<@$sumcount; $i++)
+        {
+            my $s=$sumcount->[$i];
+            if($s>$max)
+            {
+                $max=$s;
+                $maxindex=$i;
+            }
+            
+        }
+        my $nstart=$minstart+$maxindex;
+        my $nend=$nstart+$nr-1;
+        $nend=$maxstart if $nend> $maxstart;
+        return ($nstart,$nend,$max);
+    }
+        
+        
     
     sub _annotateFwd
     {
@@ -171,8 +221,99 @@ exit;
         my $teid=shift;
         
         my $chr=$tes->[0]{chr};
-        my $minstart=min( map {$_->{start_s}} @$tes);
-        my $maxstart=max(map{$_->{start_s}}@$tes);
+        my $minstart=min( map {$_->{start_s}} @$tes);   # leftstart
+        my $maxstart=max(map{$_->{start_s}}@$tes);      # rightstart
+        my $range=$maxstart-$minstart+1; 
+        
+        my $startposcount=[split //,"0" x $range];
+        foreach my $te (@$tes)
+        {
+            my $relstart=$te->{start_s}-$minstart;
+            $startposcount->[$relstart]++;
+        }
+        my $posstring=join(",",@$startposcount);
+        
+        my($nstart,$nend,$scorerange) =_find_narrow_range($startposcount,$narrow_range,$minstart,$maxstart);
+        
+        # chr,strand, teid, count, nstart, nend, wstart, wend, posstring, sam
+        my $entry=
+        {
+          chr=>$chr,
+          strand=>"F",
+          teid=>$teid,
+          count=>scalar(@$tes),
+          nstart=>$nstart,
+          nend=>$nend,
+          wstart=>$minstart,
+          wend=>$maxstart,
+          scorerange=>$scorerange,
+          posstring=>$posstring,
+          sam=>$tes
+        };
+        return $entry;
+        
+    }
+    
+    
+    
+     sub _annotateRev
+    {
+        my $tes=shift;
+        die "List of transposable elements must not be empty" unless @$tes;
+        my $narrow_range=shift;
+        my $teid=shift;
+        
+        my $chr=$tes->[0]{chr};
+        my $minend=min( map {$_->{end_s}} @$tes);   # leftstart
+        my $maxend=max(map{$_->{end_s}} @$tes);      # rightstart
+        my $range=$maxend-$minend+1; 
+        
+        my $startposcount=[split //,"0" x $range];
+        foreach my $te (@$tes)
+        {
+            my $relend=$te->{end_s}-$minend;
+            $startposcount->[$relend]++;
+        }
+        my $posstring=join(",",@$startposcount);
+        
+        my($nstart,$nend,$scorerange) =_find_narrow_range($startposcount,$narrow_range,$minend,$maxend);
+        
+        # chr,strand, teid, count, nstart, nend, wstart, wend, posstring, sam
+        my $entry=
+        {
+          chr=>$chr,
+          strand=>"R",
+          teid=>$teid,
+          count=>scalar(@$tes),
+          nstart=>,$nstart,
+          nend=>$nend,
+          wstart=>$minend,
+          wend=>$maxend,
+          scorerange=>$scorerange,
+          posstring=>$posstring,
+          sam=>$tes
+        };
+        return $entry;  
+    }
+    
+    
+    
+    
+    
+    
+    sub _annotateFwdOld
+    {
+        my $tes=shift;
+        die "List of transposable elements must not be empty" unless @$tes;
+        my $narrow_range=shift;
+        my $teid=shift;
+        
+        my $chr=$tes->[0]{chr};
+        
+
+        
+        my $minstart=min( map {$_->{start_s}} @$tes);   # leftstart
+        my $maxstart=max(map{$_->{start_s}}@$tes);      # rightstart
         my $range=$maxstart-$minstart+1; 
         
         my $narrowstart=$maxstart-$narrow_range+1;
@@ -205,7 +346,7 @@ exit;
         return $entry;
     }
     
-    sub _annotateRev
+    sub _annotateRevOld
     {
         my $tes=shift;
         die "List of transposable elements must not be empty" unless @$tes;
