@@ -15,7 +15,7 @@ my $input;
 my $tehierfile;
 my $tehiertargetlevel;
 my $mincount=2;
-my $insertdistance=300;
+my $insertdistance=80;
 my $insertdistStddev=40;
 my $readlength=100;
 my $narrowrange=200;
