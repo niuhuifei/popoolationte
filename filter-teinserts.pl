@@ -28,8 +28,8 @@ GetOptions(
     "help"	            =>\$help
 ) or pod2usage(-msg=>"Wrong options",-verbose=>1);
 
-
-die "" unless $teinsertfile;
+pod2usage(-verbose=>2) if $help;
+pod2usage(-msg=>"Wrong options",-verbose=>1) unless $teinsertfile;
 
 
 my $teinsertions=load_te_inserts($teinsertfile);
@@ -132,3 +132,50 @@ exit;
     }
 }
 
+
+#    "te-insertions=s"	    =>\$teinsertfile,
+#    "output=s"              =>\$output,
+#    "discard-overlapping"   =>\$discardoverlapping,
+#    "min-count=i"           =>\$mincount,
+#    "test"                  =>\$test,
+#    "help"	            =>\$help
+=head1 NAME
+
+filter-teinserts.pl
+
+=head1 SYNOPSIS
+
+ filter-teinserts.pl --te-insertions infile.te --output filtered.te --discard-overlapping --min-count 10
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<--te-insertions>
+
+The input file Mandatory parameter
+
+=item B<--output>
+
+The output file. Mandatory parameter
+
+=item B<--discard-overlapping>
+
+Flag; get rid of overlapping TE insertions; i.e.: overlapping ranges
+
+=item B<--min-count>
+
+The minimum number of absence and presence reads, i.e.: minimum number of PE fragments within the range
+
+=item B<--test>
+
+Run the unit tests for this script. 
+
+=item B<--help>
+
+Display help for this script
+
+=back
+
+
+=cut
