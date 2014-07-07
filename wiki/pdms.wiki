@@ -15,8 +15,12 @@ The following TE annotations have been generated with our TE annotation pipeline
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bLXlZNEFmWWR5R3c/edit?usp=sharing Annotation of FlyBase assembly v1.4]
 
-== Dsim M252 ==
+== D.simulans M252 ==
 
+Annotation of the D.simulans assembly of Palmieri et al. 2004: http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12297/abstract
+
+
+[https://drive.google.com/file/d/0Bz3RC6iIT49bUlNPd2U3TW5KdkU/edit?usp=sharing Annotation of assembly from Palmieri]
 == Dsim Hu ==
 
 
