@@ -35,10 +35,15 @@ Annotation of the D.simulans assembly of Hu et al. 2013 http://genome.cshlp.org/
 == D. simulans - Palmieri==
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZ3NVWkFiUHVnc0U/edit?usp=sharing TEs in D.simulans]
 
-= Scripts =
+=Misc=
+
+== TE hierarchy==
+
+[https://drive.google.com/file/d/0Bz3RC6iIT49bRFo1QzdRUm51cUk/edit?usp=sharing TE hierarchy]
+==Scripts ==
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZ0dZY2ZKMFF0Rk0/edit?usp=sharing scripts used in the paper]
 
-= Protocol=
+== Protocol==
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bdWFlQ3Y1OFBPRDQ/edit?usp=sharing analysis protocol]
