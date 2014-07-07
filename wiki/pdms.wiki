@@ -1,5 +1,6 @@
 #summary Supporting information for publications
-[toc]
+
+<wiki:toc max_depth="2" />
 
 =  TE annotations =
 
