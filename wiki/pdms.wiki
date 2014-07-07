@@ -1,8 +1,15 @@
 #summary Supporting information for publications
 
-=  =
+=  TE annotations =
 
-Add your content here.
+== Dmel==
+
+
+== Dsim Flybase ==
+
+== Dsim M252 ==
+
+== Dsim Hu ==
 
 
 = Details =
