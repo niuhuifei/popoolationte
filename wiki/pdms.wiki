@@ -1,9 +1,14 @@
 #summary Supporting information for publications
+[toc]
 
 =  TE annotations =
 
-== Dmel==
+The following TE annotations have been generated with our TE annotation pipeline described in the manuscript (for more details see protocol).
 
+== D.melanogaster==
+
+
+[https://drive.google.com/file/d/0Bz3RC6iIT49bYzRlMUkxaU5vazQ/edit?usp=sharing Annotation of FlyBase assembly v5.53]
 
 == Dsim Flybase ==
 
@@ -14,8 +19,8 @@
 
 = Scripts =
 
-https://drive.google.com/file/d/0Bz3RC6iIT49bZ0dZY2ZKMFF0Rk0/edit?usp=sharing
+[https://drive.google.com/file/d/0Bz3RC6iIT49bZ0dZY2ZKMFF0Rk0/edit?usp=sharing scripts used in the paper]
 
 = Protocol=
 
-https://drive.google.com/file/d/0Bz3RC6iIT49bdWFlQ3Y1OFBPRDQ/edit?usp=sharing
+[https://drive.google.com/file/d/0Bz3RC6iIT49bdWFlQ3Y1OFBPRDQ/edit?usp=sharing analysis protocol]
