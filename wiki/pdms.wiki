@@ -11,7 +11,9 @@ The following TE annotations have been generated with our TE annotation pipeline
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bYzRlMUkxaU5vazQ/edit?usp=sharing Annotation of FlyBase assembly v5.53]
 
-== Dsim Flybase ==
+== D.simulans Flybase ==
+
+[https://drive.google.com/file/d/0Bz3RC6iIT49bLXlZNEFmWWR5R3c/edit?usp=sharing Annotation of FlyBase assembly v1.4
 
 == Dsim M252 ==
 
