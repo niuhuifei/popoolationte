@@ -17,11 +17,15 @@ The following TE annotations have been generated with our TE annotation pipeline
 
 == D.simulans M252 ==
 
-Annotation of the D.simulans assembly of Palmieri et al. 2004: http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12297/abstract
+Annotation of the D.simulans assembly of Palmieri et al. 2014: http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12297/abstract
 
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bUlNPd2U3TW5KdkU/edit?usp=sharing Annotation of assembly from Palmieri]
-== Dsim Hu ==
+== D.simulans Hu ==
+
+Annotation of the D.simulans assembly of Hu et al. 2013 http://genome.cshlp.org/cgi/pmidlookup?view=long&pmid=22936249
+
+[https://drive.google.com/file/d/0Bz3RC6iIT49bZkZFN3U3MTRSNGM/edit?usp=sharing Annotation of assembly from Hu]
 
 
 = Scripts =
