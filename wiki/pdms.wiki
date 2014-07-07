@@ -27,6 +27,13 @@ Annotation of the D.simulans assembly of Hu et al. 2013 http://genome.cshlp.org/
 
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZkZFN3U3MTRSNGM/edit?usp=sharing Annotation of assembly from Hu]
 
+= TE abundance in natural populations from South Africa=
+
+== D. melanogaster v5.53==
+[https://drive.google.com/file/d/0Bz3RC6iIT49bazhtT1NtMDc5cG8/edit?usp=sharing TEs in D.melanogaster]
+
+== D. simulans - Palmieri==
+[https://drive.google.com/file/d/0Bz3RC6iIT49bZ3NVWkFiUHVnc0U/edit?usp=sharing TEs in D.simulans]
 
 = Scripts =
 
