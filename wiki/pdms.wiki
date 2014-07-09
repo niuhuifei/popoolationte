@@ -8,8 +8,10 @@ The following TE annotations have been generated with our TE annotation pipeline
 
 == D.melanogaster==
 
-
+The link will be released upon acceptance of the manuscript
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bYzRlMUkxaU5vazQ/edit?usp=sharing Annotation of FlyBase assembly v5.53]
+</wiki:comment>
 
 == D.simulans Flybase ==
 
