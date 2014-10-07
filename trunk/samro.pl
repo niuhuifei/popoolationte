@@ -121,6 +121,7 @@ exit;
     package Utility;
     use strict;
     use warnings;
+    use IO::Uncompress::Gunzip;
     sub samsoniteFastq
     {
         my $fastq=shift;
@@ -212,11 +213,16 @@ exit;
     sub get_fastq_reader
     {
         my $inputfile=shift;
-        open my $fh,"<",$inputfile or die "Could not open input file";
-        #@HWUSI-EAS300R:7:1:0:697#0/1
-        #NTCAAAAATGATTTTTCAATGTGTTTAAGGTNANNNNNNNNNCNNTNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-        #+HWUSI-EAS300R:7:1:0:697#0/1
-        #DOOSV[[ZYQQUZXRXNXZTBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+        my $fh=undef;
+        if ($inputfile=~/\.gz$/i)
+        {
+            $fh = new IO::Uncompress::Gunzip $inputfile or die "Could not open file gzipped file $inputfile  $!";
+	}
+	else
+        {
+            open $fh, "<", $inputfile  or die "Could not open file handle, $!";
+	}
+
 
         return sub
         {
