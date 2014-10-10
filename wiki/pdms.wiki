@@ -17,9 +17,9 @@ The link will be released upon acceptance of the manuscript
 
 
 The link will be released upon acceptance of the manuscript
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bLXlZNEFmWWR5R3c/edit?usp=sharing Annotation of FlyBase assembly v1.4]
-
+</wiki:comment>
 
 == D.simulans M252 ==
 
@@ -28,50 +28,53 @@ The link will be released upon acceptance of the manuscript
 
 http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12297/abstract
 
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bUlNPd2U3TW5KdkU/edit?usp=sharing Annotation of assembly from Palmieri]
+</wiki:comment>
 == D.simulans Hu ==
 
 Annotation of the D.simulans assembly of Hu et al. 2013 http://genome.cshlp.org/cgi/pmidlookup?view=long&pmid=22936249
 
 The link will be released upon acceptance of the manuscript
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZkZFN3U3MTRSNGM/edit?usp=sharing Annotation of assembly from Hu]
-
+</wiki:comment>
 = TE abundance in natural populations from South Africa=
 
 == D. melanogaster v5.53==
 
 The link will be released upon acceptance of the manuscript
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bazhtT1NtMDc5cG8/edit?usp=sharing TEs in D.melanogaster]
-
+</wiki:comment>
 
 == D. simulans - Palmieri==
 
 The link will be released upon acceptance of the manuscript
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZ3NVWkFiUHVnc0U/edit?usp=sharing TEs in D.simulans]
-
+</wiki:comment>
 
 =Misc=
 
 == TE hierarchy==
 
 The link will be released upon acceptance of the manuscript
-
+</wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bRFo1QzdRUm51cUk/edit?usp=sharing TE hierarchy]
-
+</wiki:comment>
 
 
 ==Scripts ==
 
 The link will be released upon acceptance of the manuscript
-
+</wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZ0dZY2ZKMFF0Rk0/edit?usp=sharing scripts used in the paper]
+<wiki:comment>
 
 
 == Protocol==
 The link will be released upon acceptance of the manuscript
-
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bdWFlQ3Y1OFBPRDQ/edit?usp=sharing analysis protocol]
+</wiki:comment>
