@@ -60,7 +60,7 @@ The link will be released upon acceptance of the manuscript
 == TE hierarchy==
 
 The link will be released upon acceptance of the manuscript
-</wiki:comment>
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bRFo1QzdRUm51cUk/edit?usp=sharing TE hierarchy]
 </wiki:comment>
 
@@ -68,7 +68,7 @@ The link will be released upon acceptance of the manuscript
 ==Scripts ==
 
 The link will be released upon acceptance of the manuscript
-</wiki:comment>
+<wiki:comment>
 [https://drive.google.com/file/d/0Bz3RC6iIT49bZ0dZY2ZKMFF0Rk0/edit?usp=sharing scripts used in the paper]
 <wiki:comment>
 
